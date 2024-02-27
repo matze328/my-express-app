@@ -38,23 +38,27 @@ let todos = [
 
 // GET REQUESTS
 // /v1/todos/bytodoid
-TodosRouter.get("/byid", (req, res) => {
+TodosRouter.get("/byid", async (req, res) => {
   const todoId = req.query.todoId;
+  const todo = await TodoModel.findOne({ todoId });
+ 
+
   if (!todoId) {
     res.status(StatusCodes.BAD_REQUEST).send(ReasonPhrases.BAD_REQUEST);
     return;
   }
-  const todo = todos.find((item) => item.id == todoId);
+  
   // 1 == '1' --> true
   // 1 === '1' --> false
   res.status(StatusCodes.OK).json({ todo: todo });
 });
 
 // Alle Todos von einer UserId
-TodosRouter.get("/byuserid", (req, res) => {
+TodosRouter.get("/byuserid",async (req, res) => {
   // const userId = req.body.userId;
   // const userId = parseInt(req.query.userId);
   const userId = req.query.userId;
+  const userTodos = await TodoModel.findAll({ userId });
   console.log(userId);
 
   if (!userId) {
@@ -64,7 +68,7 @@ TodosRouter.get("/byuserid", (req, res) => {
     return;
   }
 
-  const userTodos = todos.filter((todo) => todo.userId == userId);
+  
 
   res.status(StatusCodes.OK).json(userTodos);
   // res.status(StatusCodes.OK).send(JSON.stringify(userTodos)); //alternativ
@@ -77,6 +81,7 @@ TodosRouter.get("/all", (req, res) => {
 // PUT REQUESTS
 TodosRouter.put("/mark", (req, res) => {
   const { id, newIsDone } = req.body;
+  
 
   const todo = todos.find((item) => item.id == id);
 
