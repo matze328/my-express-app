@@ -79,11 +79,11 @@ TodosRouter.get("/all", (req, res) => {
 });
 
 // PUT REQUESTS
-TodosRouter.put("/mark", (req, res) => {
+TodosRouter.put("/mark", async (req, res) => {
   const { id, newIsDone } = req.body;
   
-
-  const todo = todos.find((item) => item.id == id);
+  const todo = await TodoModel.findOne({ id });
+  a
 
   // setzt das zuvor definierte todo auf den neuen isDone WErt
   todo.isDone = newIsDone;
