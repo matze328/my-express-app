@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "292697c1-47ac-4160-a03e-3269f2c1e806",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31481241"
+	},
+	"item": [
+		{
+			"name": "todos",
+			"item": [
+				{
+					"name": "http://localhost:5050/v1/todos/byid?todoId=1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"1"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5050/v1/todos/byid?todoId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"v1",
+								"todos",
+								"byid"
+							],
+							"query": [
+								{
+									"key": "todoId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5050/v1/todos/create",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"1"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newTask\": \"Milch kaufen\",\r\n    \"newIsDone\": true,\r\n    \"newDueDate\": \"2024-11-10\",\r\n    \"newUserId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/v1/todos/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"v1",
+								"todos",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5050/v1/todos/mark",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5050/v1/todos/mark",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"v1",
+								"todos",
+								"mark"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
