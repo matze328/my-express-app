@@ -1,4 +1,4 @@
-require("../../server");
+require("../../src/database/server");
 const todoSequelize = require("../../src/database/setup/database");
 
 module.exports = async () => {
